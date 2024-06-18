@@ -28,6 +28,9 @@ std::string updateSRCSLine(const std::string& makefileContent, const std::vector
 				}
 				newLine += "\n";
 			}
+			if (files.size() == 0) {
+				newLine += "\n";
+			}
 			oss << newLine << "\n";
 			replacing = true;
 		} else if (replacing && (line.find("=") != std::string::npos || line.find(":") != std::string::npos)) {
