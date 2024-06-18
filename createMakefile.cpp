@@ -1,14 +1,16 @@
-CXX = g++ -g3 -O2
+#include "newMakefile.hpp"
+
+int buildMakefile(std::string path) {
+
+	std::string makefileContent = R"(CXX = g++ -g3 -O2
 
 CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -I ./
 
-SRCS =	updateMakefile.cpp \
-		createMakefile.cpp \
-		main.cpp
+SRCS =	main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = newMakefile
+TARGET = genericTarget
 
 all: $(TARGET)
 
@@ -31,3 +33,15 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
+	)";
+
+	std::ofstream makefile(path);
+	if (!makefile.is_open()) {
+		std::cerr << "Failed to create Makefile" << std::endl;
+		return 1;
+	}
+	makefile << makefileContent;
+	makefile.close();
+	return (0);
+}
+
