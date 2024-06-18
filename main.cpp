@@ -8,7 +8,7 @@ int main(int argc, char **argv) {
 	std::string path = argc >= 2 ? argv[1] : ".";
 
 	std::vector<std::string> files;
-	for (const fs::directory_entry &entry : fs::directory_iterator(path)) {
+	for (const std::filesystem::directory_entry &entry : std::filesystem::directory_iterator(path)) {
 		std::string filename = entry.path().filename().string();
 		if (!filename.compare("Makefile"))
 			makefileFound = true;
@@ -21,8 +21,9 @@ int main(int argc, char **argv) {
 	else
 		if (buildMakefile(path + "/Makefile"))
 			return (1);
-
+	std::cout << "Writing to the makefile..." << std::endl;
 	if (updateMakefile(files, path + "/Makefile"))
 		return (1);
+	std::cout << "Makefile updated successfully" << std::endl;
 	return 0;
 }

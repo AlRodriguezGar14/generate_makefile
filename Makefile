@@ -8,7 +8,7 @@ SRCS =	updateMakefile.cpp \
 
 OBJS = $(SRCS:.cpp=.o)
 
-TARGET = newMakefile
+TARGET = setMakefile
 
 all: $(TARGET)
 

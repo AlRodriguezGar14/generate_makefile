@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <fstream>
 #include <sstream>
-namespace fs = std::filesystem;
 
 
 int updateMakefile(std::vector<std::string> files, std::string path);
