@@ -4,7 +4,7 @@ int buildMakefile(std::string path) {
 
 	std::string makefileContent = R"(CXX = g++ -g3 -O2
 
-CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -I ./
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -I ./
 
 SRCS =	main.cpp
 
